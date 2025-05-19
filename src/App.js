@@ -1,7 +1,7 @@
 import ProductCatalog from "./pages/ProductCatalog";
 
 function App() {
-  return <ProductCatalog />;
+  return <ProductCatalog />; 
 }
 
 export default App;
