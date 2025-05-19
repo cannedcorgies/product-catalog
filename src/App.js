@@ -8,7 +8,9 @@ function App() {
       <h3> - filtering/sort-by </h3>
       <h3> - shopping cart </h3>
       <h3> - juice!!!! </h3>
-      <button>let's go!!</button>
+      <button className="bg-blue-500 text-white px-4 py-2 rounded">
+        tailwind installed
+      </button>
     </div>
   );
 }
