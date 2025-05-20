@@ -32,7 +32,7 @@ const ProductDetail = () => {
                 <p className="text-gray-500 text-lg mb-4">${product.price}</p>
                 <p className="text-base break-words mb-6">{product.description}</p> 
                 <button className="w-full bg-sky-300 text-white px-6 py-3 rounded-md hover:bg-sky-400 transition">
-                    Add to bag
+                    Add to Cart
                 </button>
             </div>
             {/*RIGHT SIDE - JUST THE PICTURE*/}
