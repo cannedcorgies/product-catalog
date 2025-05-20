@@ -8,13 +8,31 @@ export const CartProvider = ({ children }) => {
     const [cartItems, setCartItems] = useState([]);
 
     const addToCart = (product) => {
-        setCartItems((prev) => [...prev, product]);
+        setCartItems((prev) => {
+            const index = prev.findIndex((item) => item.id === product.id);
+            // if cart's not empty...
+            if (index !== -1) {
+                const updated = [...prev]
+                updated[index].quantity += 1;   // search for index, and add 1 to quantity
+                return updated;
+            }
+            return [...prev, {...product, quantity:1}]; // otherwise, default to 1
+        });
     };
 
-    // so do not look up by id cuz that breaks everything
+    // update count per item
+    const updateQuantity = (index, delta) => {
+        setCartItems((prev) => {
+            const updated = [...prev];
+            updated[index].quantity = Math.max(1, updated[index].quantity + delta); // cannot go below 1
+            return updated;
+        });
+    };
+
+    // remove by index
     const removeFromCart = (index) => {
         if (index >= 0) {
-            const updatedItems = [...cartItems.slice(0, index), ...cartItems.slice(index + 1)];
+            const updatedItems = [...cartItems.slice(0, index), ...cartItems.slice(index + 1)]; // cut it out!
             console.log(updatedItems);
             setCartItems(updatedItems);
         }
@@ -23,7 +41,8 @@ export const CartProvider = ({ children }) => {
     const value = {
         cartItems,
         addToCart,
-        removeFromCart
+        removeFromCart,
+        updateQuantity
     };
 
     return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

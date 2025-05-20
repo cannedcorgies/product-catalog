@@ -8,7 +8,7 @@ const Header = () => {
 
     const toggleBag = () => setIsBagOpen((prev) => !prev);
 
-    const { cartItems, removeFromCart } = useCart();
+    const { cartItems, removeFromCart, updateQuantity} = useCart();
 
     return (
         // WRAPS BOTH HEADER AND DROPDOWN
@@ -25,10 +25,16 @@ const Header = () => {
                     Digital Nest Store
                 </Link>
 
-                {/* RIGHT: SHOPPING CART */}
+                {/* RIGHT: SHOPPING CART AND COUNTER*/}
                 <div className="relative">
                     <button onClick={toggleBag} aria-label="Toggle bag">
                         <ShoppingCart className="w-6 h-6 text-gray-700 hover:text-black transition" />
+                        {/* if at least one item, show counter above the cart */}
+                        {cartItems.length > 0 && (
+                            <span className="absolute -top-2 -right-2 bg-sky-500 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
+                                {cartItems.reduce((total, item) => total + item.quantity, 0)}
+                            </span>
+                        )}
                     </button>
 
                     {/* DROPDOWN BAG CONTENT */}
@@ -44,19 +50,43 @@ const Header = () => {
                                 {/* map list items */}
                                 {cartItems.map((item, index) => (
                                     <li key={index} className="flex items-center gap-4 py-2">
-                                        <img
-                                            src={item.image}
-                                            alt={item.name}
-                                            className="w-12 h-12 object-cover rounded"
-                                        />
-                                        <div className="flex-1">
-                                            <p className="font-medium text-sm">{item.name}</p>
-                                            <p className="text gray-500 text-sm">${item.price.toFixed(2)}</p>
+                                        {/* DATA AND LINK */}
+                                        <Link to={`/product/${item.id}`} className="flex items-center gap-4 flex-1 hover:opacity-80 transition">
+                                            <img
+                                                src={item.image}
+                                                alt={item.name}
+                                                className="w-12 h-12 object-cover rounded"
+                                            />
+                                            <div>
+                                                <p className="font-medium text-sm">{item.name}</p>
+                                                <p className="text-gray-500 text-sm">${item.price.toFixed(2)}</p>
+                                            </div>
+                                        </Link>
+                                        {/* QUANTITY BUTTONS */}
+                                        <div className="flex items-center space-x-1">
+                                            {/* ADD 1 BUTTON */}
+                                            <button
+                                                className="px-2 py-1 bg-gray-200 text-sm rounded hover:bg-gray-300"
+                                                onClick={() => updateQuantity(index, -1)}
+                                            >
+                                                –
+                                            </button>
+                                            {/* COUNTER */}
+                                            <span className="px-2">{item.quantity}</span>
+                                            {/* MINUS 1 BUTTON */}
+                                            <button
+                                                className="px-2 py-1 bg-gray-200 text-sm rounded hover:bg-gray-300"
+                                                onClick={() => updateQuantity(index, 1)}
+                                            >
+                                                +
+                                            </button>
                                         </div>
+
+                                        {/* REMOVE BUTTON */}
                                         <button
                                             onClick={() => removeFromCart(index)}
-                                            className="text-red-500 hover:text-red-700 text-xs"
-                                            >
+                                            className="ml-2 text-red-500 hover:text-red-700 text-xs"
+                                        >
                                             Remove
                                         </button>
                                     </li>
@@ -64,8 +94,10 @@ const Header = () => {
                             </ul>
 
                             {/* TOTAL */}
+                                {/* ADD 1 BUTTON */}
                             <div className="pt-4 border-t text-right font-semibold">
-                                Total: ${cartItems.reduce((sum, item) => sum + item.price, 0).toFixed(2)}
+                                {/* iteratively add price times the quantity of that item */}
+                                Total: ${cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0).toFixed(2)}
                             </div>
                         </div>
                     )}
