@@ -11,10 +11,12 @@
 
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useCart } from "../context/CartContext";
 
 const ProductDetail = () => {
     const { id } = useParams();
     const [product, setProduct] = useState(null);
+    const { addToCart } = useCart();
 
     useEffect(() => {
         fetch(`https://cart-api.alexrodriguez.workers.dev/products/${id}`)
@@ -31,7 +33,7 @@ const ProductDetail = () => {
                 <h1 className="text-4xl break-words font-semibold mb-4">{product.name}</h1>
                 <p className="text-gray-500 text-lg mb-4">${product.price}</p>
                 <p className="text-base break-words mb-6">{product.description}</p> 
-                <button className="w-full bg-sky-300 text-white px-6 py-3 rounded-md hover:bg-sky-400 transition">
+                <button className="w-full bg-sky-300 text-white px-6 py-3 rounded-md hover:bg-sky-400 transition" onClick={() => addToCart(product)}>
                     Add to Cart
                 </button>
             </div>
