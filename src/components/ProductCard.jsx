@@ -32,7 +32,7 @@ const ProductCard = ({id, image, name, price}) => {
 
     return (
         <Link to={`/product/${id}`} className="block">
-            <div className="group cursor-pointer w-full max-w-sm mx-auto rounded-lg overflow-hidden bg-white shadow-sm hover:shadow-md transition-all duration-200">
+            <div className="p-10 flex-initial scale-150 group cursor-pointer w-full max-w-sm mx-auto rounded-lg overflow-hidden bg-white border-gray-800 shadow-lg hover:shadow-2xl transition-all duration-200">
                 {/*TOP HALF*/}
                 <div className="w-full aspect-[4-3] bg-gray-100">
                     <img
@@ -42,7 +42,7 @@ const ProductCard = ({id, image, name, price}) => {
                     />
                 </div>
                 {/*BOTTOM HALF*/}
-                <div className="p-4 text-center">
+                <div className="p- text-center">
                     <h2 className="text-lg font-medium text-gray-900">{name}</h2>
                     <p className="text-base text-gray-500 mt-1">${price}</p>
                 </div>

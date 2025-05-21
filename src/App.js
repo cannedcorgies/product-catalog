@@ -6,15 +6,17 @@ import { CartProvider } from "./context/CartContext";
 
 function App() {
   return (
-    <CartProvider>
-      <Router basename={process.env.PUBLIC_URL}>
-        <Header />
-        <Routes>
-          <Route path="/" element={<ProductCatalog />} />
-          <Route path="/product/:id" element={<ProductDetail />} />
-        </Routes>
-      </Router>
-    </CartProvider>
+    <div style={{ backgroundColor: "rgb(255, 255, 255)" }} className="min-h-screen">
+      <CartProvider>
+        <Router basename={process.env.PUBLIC_URL}>
+          <Header />
+          <Routes>
+            <Route path="/" element={<ProductCatalog />} />
+            <Route path="/product/:id" element={<ProductDetail />} />
+          </Routes>
+        </Router>
+      </CartProvider>
+    </div>
   );
 }
 

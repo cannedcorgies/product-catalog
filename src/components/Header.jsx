@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { ShoppingCart } from "lucide-react";
 import { useCart } from "../context/CartContext";
+import nestIcon from "../assets/icons/digitalNest-icon.jpg";
 
 const Header = () => {
     const [isBagOpen, setIsBagOpen] = useState(false);
@@ -16,13 +17,13 @@ const Header = () => {
             className="sticky top-0 bg-white shadow z-50"
             onMouseLeave={() => setIsBagOpen(false)}
         >
-            <div className="max-w-9xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div className="max-w-9xl mx-auto px-6 py-10 flex justify-between items-center">
                 {/* LEFT: LOGO */}
                 <Link
                     to="/"
                     className="text-xl font-semibold hover:opacity-70 transition"
                 >
-                    Digital Nest Store
+                    <img src={nestIcon} alt="Digital Nest Logo" className="h-10 w-auto" />
                 </Link>
 
                 {/* RIGHT: SHOPPING CART AND COUNTER*/}

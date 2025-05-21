@@ -77,9 +77,9 @@ const ProductCatalog = () => {
     
     return (
 
-        <div className="p-6 flex">
+        <div className="flex items-stretch">
             {/* FILTER SIDEBAR */}
-            <div className="w-1/6">
+            <div className="w-48 bg-white p-4 min-h-screen shadow-md border-gray-300">
                 <h2 className="text-lg font-semibold mb-2">Filter by Category</h2>
                 {categories.map((category) => (
                     <label key={category} className="flex items-center gap-2 mb-2 cursor-pointer">
@@ -94,7 +94,7 @@ const ProductCatalog = () => {
                 ))}
                 <div className="flex mb-4">
                     <select
-                        className="border rounded px-6 py-1 text-sm"
+                        className="border rounded px-4 py-1 text-sm"
                         value={sortOption}
                         onChange={(e) => setSortOption(e.target.value)}
                     >
@@ -106,16 +106,18 @@ const ProductCatalog = () => {
             </div>
 
              {/* PRODUCT GRID */}
-            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-40">
-                {visibleProducts.map((product) => (
-                    <ProductCard
-                    key={product.id}
-                    id={product.id}
-                    name={product.name}
-                    price={product.price}
-                    image={product.image}
-                    />
-                ))}
+            <div className="p-40">
+                <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3 gap-80">
+                    {visibleProducts.map((product) => (
+                        <ProductCard
+                        key={product.id}
+                        id={product.id}
+                        name={product.name}
+                        price={product.price}
+                        image={product.image}
+                        />
+                    ))}
+                </div>
             </div>
         </div>
     );
