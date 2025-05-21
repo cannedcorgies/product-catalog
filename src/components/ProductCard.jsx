@@ -27,13 +27,20 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const ProductCard = ({id, image, name, price}) => {
 
     return (
         <Link to={`/product/${id}`} className="block">
-            <div className="p-10 flex-initial scale-150 group cursor-pointer w-full max-w-sm mx-auto rounded-lg overflow-hidden bg-white border-gray-800 shadow-lg hover:shadow-2xl transition-all duration-200">
-                {/*TOP HALF*/}
+
+            <motion.div
+                layout
+                initial={{ opacity: 0, y: 0 }}
+                animate={{ opacity: 1, y: 10 }}
+                transition={{ duration: 0.1, ease: "easeOut" }}
+                className="p-10 flex-initial scale-150 group cursor-pointer w-full max-w-sm mx-auto rounded-lg overflow-hidden bg-white border-gray-800 shadow-lg hover:shadow-2xl transition-all duration-200"
+            >{/*TOP HALF*/}
                 <div className="w-full aspect-[4-3] bg-gray-100">
                     <img
                         src={image}
@@ -42,11 +49,11 @@ const ProductCard = ({id, image, name, price}) => {
                     />
                 </div>
                 {/*BOTTOM HALF*/}
-                <div className="p- text-center">
-                    <h2 className="text-lg font-medium text-gray-900">{name}</h2>
+                <div className="pt-6 text-center">
+                    <h2 className="text-lg font-medium text-gray-900 group-hover:scale-105">{name}</h2>
                     <p className="text-base text-gray-500 mt-1">${price}</p>
                 </div>
-            </div>
+            </motion.div>
         </Link>
     );
 
