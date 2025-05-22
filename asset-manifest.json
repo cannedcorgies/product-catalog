@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/product-catalog/static/css/main.a780b2ea.css",
-    "main.js": "/product-catalog/static/js/main.22b21f1d.js",
+    "main.css": "/product-catalog/static/css/main.c5d85858.css",
+    "main.js": "/product-catalog/static/js/main.808b5293.js",
     "static/media/digitalNest-icon.jpg": "/product-catalog/static/media/digitalNest-icon.29b363f2a01c10c782d3.jpg",
     "index.html": "/product-catalog/index.html",
-    "main.a780b2ea.css.map": "/product-catalog/static/css/main.a780b2ea.css.map",
-    "main.22b21f1d.js.map": "/product-catalog/static/js/main.22b21f1d.js.map"
+    "main.c5d85858.css.map": "/product-catalog/static/css/main.c5d85858.css.map",
+    "main.808b5293.js.map": "/product-catalog/static/js/main.808b5293.js.map"
   },
   "entrypoints": [
-    "static/css/main.a780b2ea.css",
-    "static/js/main.22b21f1d.js"
+    "static/css/main.c5d85858.css",
+    "static/js/main.808b5293.js"
   ]
 }
