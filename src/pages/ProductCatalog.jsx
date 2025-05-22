@@ -154,7 +154,7 @@ const ProductCatalog = () => {
 
                     {/* PRODUCT GRID */}
                     <div className="px-4 sm:px-12 lg:px-20 xl:px-40 py-10 flex-grow w-full">
-                        <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 xl:grid-cols-3 gap-80">
+                        <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 xl:grid-cols-3 gap-40">
                             {visibleProducts.map((product) => (
                                 <ProductCard
                                 key={product.id}
