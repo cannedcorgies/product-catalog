@@ -40,7 +40,7 @@ const Header = () => {
 
                     {/* DROPDOWN BAG CONTENT */}
                     {isBagOpen && (
-                        <div className="absolute right-0 mt-4 w-80 bg-white shadow-lg border rounded-md p-4 space-y-4">
+                        <div className="absolute right-0 mt-4 w-80 bg-white shadow-lg border rounded-md p-4 space-y-4 z-50">
                             {/*<p className="text-sm text-gray-500 italic">
                                 Nothing to see here...
                             </p>*/}
