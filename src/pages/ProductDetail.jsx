@@ -39,7 +39,7 @@ const ProductDetail = () => {
                 />
             </div>
 
-            {/* DETAILS - Order Second on mobile, First on desktop */}
+            {/* DETAILS*/}
             <div className="order-2 md:order-1">
                 <h1 className="text-4xl break-words font-semibold mb-4">{product.name}</h1>
                 <p className="text-gray-500 text-lg mb-4">${product.price}</p>
