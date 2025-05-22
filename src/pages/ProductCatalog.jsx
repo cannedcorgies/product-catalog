@@ -76,13 +76,15 @@ const ProductCatalog = () => {
     /////GENERATE THE GRID
     
     return (
-
-        <div className="flex items-stretch">
-            {/* FILTER SIDEBAR */}
-            <div className="w-48 bg-white p-4 min-h-screen shadow-md border-gray-300">
-                <h2 className="text-lg font-semibold mb-2">Filters</h2>
-                {categories.map((category) => (
-                    <label key={category} className="flex items-center gap-2 mb-2 cursor-pointer">
+        <div className="min-h-screen flex flex-col">
+            {/* CONTENT AREA: SIDEBAR+GRID */}
+            <div className="flex flex-grow">
+                {/* FILTER SIDEBAR */}
+                <div className="w-80 bg-white p-4 min-h-screen shadow-md border-r border-gray-300 sticky top-0 h-screen">
+                    <div className="pl-20">
+                    <h2 className="text-lg font-semibold mb-2">Product Type</h2>
+                    {categories.map((category) => (
+                        <label key={category} className="flex items-center gap-2 mb-2 cursor-pointer">
                         <input
                             type="checkbox"
                             checked={filters.includes(category)}
@@ -90,24 +92,25 @@ const ProductCatalog = () => {
                             className="mr-2"
                         />
                         {category}
-                    </label>
-                ))}
-                <div className="flex mb-4">
-                    <select
+                        </label>
+                    ))}
+                    <div className="flex mb-4">
+                        <select
                         className="border rounded px-4 py-1 text-sm"
                         value={sortOption}
                         onChange={(e) => setSortOption(e.target.value)}
-                    >
+                        >
                         <option value="az">Sort: A–Z</option>
                         <option value="price-asc">Price: Low → High</option>
                         <option value="price-desc">Price: High → Low</option>
-                    </select>
+                        </select>
+                    </div>
+                    </div>
                 </div>
-            </div>
 
-             {/* PRODUCT GRID */}
-            <div className="p-40">
-                <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3 gap-80">
+                {/* PRODUCT GRID */}
+                <div className="p-40 flex-row">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3 gap-80">
                     {visibleProducts.map((product) => (
                         <ProductCard
                         key={product.id}
@@ -117,6 +120,31 @@ const ProductCatalog = () => {
                         image={product.image}
                         />
                     ))}
+                    </div>
+
+                    {/* FOOTER CREDITS */}
+                    <div className="mt-20 px-8 pt-10 text-center text-gray-500 text-sm">
+                        <p className="mb-2">Made by Fernando Jose Alcazar, 2025</p>
+                        <div className="flex justify-center gap-4">
+                            <a
+                            href="https://www.linkedin.com/in/alcazarfjose"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="underline text-blue-400 hover:text-blue-600 transition"
+                            >
+                            LinkedIn
+                            </a>
+                            <a
+                            href="https://linktr.ee/falcazar"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="underline text-blue-400 hover:text-blue-600 transition"
+                            >
+                            Linktree
+                            </a>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>

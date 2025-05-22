@@ -14,7 +14,7 @@ const Header = () => {
     return (
         // WRAPS BOTH HEADER AND DROPDOWN
         <header 
-            className="sticky top-0 bg-white shadow z-50"
+            className="top-0 bg-white shadow z-50"
             onMouseLeave={() => setIsBagOpen(false)}
         >
             <div className="max-w-9xl mx-auto px-6 py-10 flex justify-between items-center">
