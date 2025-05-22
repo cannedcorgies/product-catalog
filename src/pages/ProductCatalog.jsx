@@ -73,14 +73,51 @@ const ProductCatalog = () => {
         );
     }
 
+    const showMobileFilters = useState(false);
+
+    function setShowMobileFilters(state) {
+        showMobileFilters = state;
+    }
+
+
     /////GENERATE THE GRID
     
     return (
         <div className="min-h-screen flex flex-col">
+            {showMobileFilters && (
+                <div className="fixed inset-0 bg-white z-50 p-6 overflow-y-auto sm:hidden">
+                    <div className="flex justify-between items-center mb-4">
+                    <h2 className="text-lg font-bold">Filter Products</h2>
+                    <button onClick={() => setShowMobileFilters(false)} className="text-gray-500 text-sm">Close</button>
+                    </div>
+                    {categories.map((category) => (
+                    <label key={category} className="flex items-center gap-2 mb-2 cursor-pointer">
+                        <input
+                        type="checkbox"
+                        checked={filters.includes(category)}
+                        onChange={() => toggleCategory(category)}
+                        className="mr-2"
+                        />
+                        {category}
+                    </label>
+                    ))}
+                    <div className="mt-4">
+                    <select
+                        className="border rounded px-4 py-2 w-full text-sm"
+                        value={sortOption}
+                        onChange={(e) => setSortOption(e.target.value)}
+                    >
+                        <option value="az">Sort: A–Z</option>
+                        <option value="price-asc">Price: Low → High</option>
+                        <option value="price-desc">Price: High → Low</option>
+                    </select>
+                    </div>
+                </div>
+            )}
             {/* CONTENT AREA: SIDEBAR+GRID */}
             <div className="flex flex-grow">
                 {/* FILTER SIDEBAR */}
-                <div className="w-80 bg-white p-4 min-h-screen shadow-md border-r border-gray-300 sticky top-0 h-screen">
+                <div className="hidden sm:block w-80 bg-white p-4 min-h-screen shadow-md border-r border-gray-300 sticky top-0 h-screen">
                     <div className="pl-20">
                     <h2 className="text-lg font-semibold mb-2">Product Type</h2>
                     {categories.map((category) => (
@@ -110,7 +147,14 @@ const ProductCatalog = () => {
 
                 {/* PRODUCT GRID */}
                 <div className="p-40 flex-row">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3 gap-80">
+                    {/* Show only on mobile */}
+                    <button
+                        onClick={() => setShowMobileFilters(true)}
+                        className="sm:hidden p-4 text-sm underline text-blue-600 fixed top-0 left-0 bg-white z-50 shadow"
+                        >
+                        Filters
+                    </button>
+                    <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 xl:grid-cols-3 gap-80">
                     {visibleProducts.map((product) => (
                         <ProductCard
                         key={product.id}
@@ -144,7 +188,6 @@ const ProductCatalog = () => {
                             </a>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
