@@ -80,7 +80,7 @@ const ProductCatalog = () => {
         <div className="flex items-stretch">
             {/* FILTER SIDEBAR */}
             <div className="w-48 bg-white p-4 min-h-screen shadow-md border-gray-300">
-                <h2 className="text-lg font-semibold mb-2">Filter by Category</h2>
+                <h2 className="text-lg font-semibold mb-2">Filters</h2>
                 {categories.map((category) => (
                     <label key={category} className="flex items-center gap-2 mb-2 cursor-pointer">
                         <input

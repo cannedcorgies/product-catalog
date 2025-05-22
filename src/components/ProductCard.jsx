@@ -51,7 +51,9 @@ const ProductCard = ({id, image, name, price}) => {
                 {/*BOTTOM HALF*/}
                 <div className="pt-6 text-center">
                     <h2 className="text-lg font-medium text-gray-900 group-hover:scale-105">{name}</h2>
-                    <p className="text-base text-gray-500 mt-1">${price}</p>
+                    <p className="pt-4 text-base text-gray-900 mt-1">${price}</p>
+                    <p className="pt-4 text-sm text-gray-500 mt-1">In Stock</p>
+                    <p className="text-sm text-gray-500 mt-1">Arrives by Wednesday</p>
                 </div>
             </motion.div>
         </Link>

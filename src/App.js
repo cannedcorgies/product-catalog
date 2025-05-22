@@ -6,7 +6,7 @@ import { CartProvider } from "./context/CartContext";
 
 function App() {
   return (
-    <div style={{ backgroundColor: "rgb(255, 255, 255)" }} className="min-h-screen">
+    <div style={{ backgroundColor: "rgb(181, 238, 211)" }} className="min-h-screen">
       <CartProvider>
         <Router basename={process.env.PUBLIC_URL}>
           <Header />
